@@ -1,26 +1,29 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMap, faMapPin } from "@fortawesome/free-solid-svg-icons";
+import { faMapPin } from "@fortawesome/free-solid-svg-icons";
+import Japan from "../assets/japan.jpg";
 
-export default function Entry() {
+export default function Entry(props) {
   return (
     <div>
-      <img src="" alt="" />
-      <div>
-        <span>
-          <FontAwesomeIcon icon={faMapPin} />
-          &nbsp; Japan &nbsp;
-          <a href="">View on Google Maps</a>
-        </span>
-        <h2>Mount Fuji</h2>
-        <span>12 Jan, 2021 - 24 Jan, 2021</span>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-          harum culpa, ducimus accusamus repellat corrupti eaque illo provident
-          hic exercitationem autem quasi ex rem aut error qui, quaerat quas.
-          Voluptates.
-        </p>
+      <div className="entry">
+        <img src={props.coverImg} alt="" className="entry--img" />
+        <div className="entry--content">
+          <span>
+            <FontAwesomeIcon icon={faMapPin} className="entry--map-marker" />
+            &nbsp; {props.location} &nbsp;
+            <a href={props.link} className="entry--link-to-google">
+              View on Google Maps
+            </a>
+          </span>
+          <h2 className="entry--title">{props.title}</h2>
+          <span className="entry--stay">
+            {props.date.arrived} - {props.date.left}
+          </span>
+          <p className="entry--text">{props.text}</p>
+        </div>
       </div>
+      <hr />
     </div>
   );
 }
